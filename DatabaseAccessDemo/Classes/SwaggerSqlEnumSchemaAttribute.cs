@@ -14,10 +14,12 @@ namespace DemoAPI.Classes
 		AllowMultiple = false)]
 	public class SwaggerSqlEnumSchemaAttribute : SwaggerSchemaAttribute
 	{
+		public static string ConnectionString = "";
+
 		public SwaggerSqlEnumSchemaAttribute(SqlEnumType type)
 		{
 			var contextOptions = new DbContextOptionsBuilder<ApiDbContext>()
-				.UseSqlServer("Name=DemoAPI")
+				.UseSqlServer(ConnectionString)
 				.Options;
 			using var db = new ApiDbContext(contextOptions);
 

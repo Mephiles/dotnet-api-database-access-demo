@@ -6,10 +6,6 @@ namespace DatabaseAccessDemo.Models;
 
 public partial class ApiDbContext : DbContext
 {
-    public ApiDbContext()
-    {
-    }
-
     public ApiDbContext(DbContextOptions<ApiDbContext> options)
         : base(options)
     {
@@ -18,9 +14,6 @@ public partial class ApiDbContext : DbContext
     public virtual DbSet<Item> Items { get; set; }
 
     public virtual DbSet<Type> Types { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Name=ConnectionStrings:DemoAPI");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
